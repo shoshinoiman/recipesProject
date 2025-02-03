@@ -1,0 +1,155 @@
+/* App.css */
+
+/* איפוס כללי והגדרות בסיס */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+/* עיצוב קונטיינר ראשי */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* עיצוב טפסים */
+form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* תוויות וקלטים */
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #ff4081;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #ff80ab;
+}
+
+/* כפתורים */
+button {
+  background-color: #ff4081;
+  border: none;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #ff80ab;
+  transform: scale(1.03);
+}
+
+/* עיצוב רכיבים דינמיים כמו useFieldArray */
+.field-array-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.field-array-item input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* הודעות שגיאה */
+p {
+  color: #ff80ab;
+  font-size: 0.9rem;
+}
+
+/* עיצוב תגיות נוספות, לדוגמה כותרות */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff4081;
+}
+
+/* עיצוב רספונסיבי */
+
+/* מכשירים ברוחב עד 768px */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 20px;
+  }
+  
+  input,
+  textarea,
+  select,
+  button {
+    font-size: 0.9rem;
+  }
+}
+
+/* מכשירים ברוחב עד 480px */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 10px;
+  }
+  
+  input,
+  textarea,
+  select,
+  button {
+    font-size: 0.8rem;
+  }
+}
+/* אם רכיב רשימת המתכונים נקרא "recipes-list" */
+.recipes-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* למרכז את כל הרכיבים בצורה אופקית */
+  justify-content: center; /* למרכז את כל הרכיבים בצורה אנכית */
+  height: 100%; /* להבטיח שהגובה יתפוס את כל המסך */
+  margin: 0 auto;
+}
+
+/* בנוסף, אם אתה רוצה גם לעצב את כל המתכונים באופן כללי, 
+   תוכל להוסיף גם padding או margin כדי לסדר את הרווחים בצורה נאה יותר */
+.recipe-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%; /* אם אתה רוצה שהכרטיסים יתפוס את כל הרוחב */
+  max-width: 600px; /* אם תרצה להגביל את הרוחב */
+  text-align: center;
+}
