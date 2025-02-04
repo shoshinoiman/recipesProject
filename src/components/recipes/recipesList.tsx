@@ -1,21 +1,18 @@
 import { Recipe } from '../../modle/recipe';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import RecipeDetails from './recipeDetails';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
 import { getRecipes } from './reciepsFetch';
-
+import RecipeDetails from './recipeDetails';
 export default function RecipesList() {
     const dispatch = useDispatch<any>();
     const list = useSelector((state: any) => state?.recipes?.recipes) as Recipe[];
     const loading = useSelector((state: any) => state?.recipes?.loading);
     const error = useSelector((state: any) => state?.recipes?.error);
-
     const [isShowDetails, setIsShowDetails] = useState(false);
     const [currentRecipe, setCurrentRecipe] = useState({} as Recipe);
-
     const handleClick = (recipe: Recipe) => {
         setIsShowDetails(true);
         setCurrentRecipe(recipe);
@@ -76,7 +73,6 @@ export default function RecipesList() {
                     {buttons}
                 </ButtonGroup>
             </Box>
-
             <Box sx={{ marginTop: 3, display: 'flex', justifyContent: 'center' }}>
                 {isShowDetails && <RecipeDetails {...currentRecipe}></RecipeDetails>}
             </Box>

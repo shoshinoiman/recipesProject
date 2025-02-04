@@ -23,12 +23,12 @@ const style = {
 };
 
 export default function Login() {
-    const userState = useContext(userContext);
-    const [open, setOpen] = useState(false);
-    const [afterIn, setAfterIn] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    console.log('hgfhnfgmghmhjk,'+open);
+  const userState = useContext(userContext);
+  const [open, setOpen] = useState(false);
+  const [afterIn, setAfterIn] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  console.log('hgfhnfgmghmhjk,' + open);
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -36,21 +36,21 @@ export default function Login() {
   const handleRegister = async (e: FormEvent, userData: Partial<user>) => {
     e.preventDefault();
     try {
-    console.log('hgfhnfgmghmhjk,'+open);
+      console.log('hgfhnfgmghmhjk,' + open);
 
       const res = await axios.post('http://localhost:3000/api/user/login', userData);
       console.log(res.data);
       userState.userDispatch({ type: 'CREATE', data: res.data as user });
     } catch (e) {
-    console.log('hgfhnfgmghmhjkljkhlhff,'+open);
-
-      if (e === 401) alert("Invalid password or email!!");
-      else {
-        setAfterIn(true);
-        userState.user?.isConnected && (userState.user.isConnected = true);
+      if (axios.isAxiosError(e)) {
+        if (e.response?.status === 401) {
+          alert("Invalid password or email!!");
+        } else {
+          alert("An error occurred: " + e.message);
+        }
+      } else {
+        console.error("Unexpected error:", e);
       }
-
-      console.log(e);
     }
   };
 
@@ -68,13 +68,13 @@ export default function Login() {
     <div>
       {!afterIn && (
         <Button
-        sx={{ 
-            position: 'absolute', 
-            top: '13%', 
-            left: '-100px', 
-            backgroundColor: '#77A672', 
-            color: 'white', 
-            borderRadius: '20px solid #4CAF50' ,  
+          sx={{
+            position: 'absolute',
+            top: '13%',
+            left: '-100px',
+            backgroundColor: '#77A672',
+            color: 'white',
+            borderRadius: '20px solid #4CAF50',
             ':hover': { backgroundColor: '#5E8B5C' }
           }}
           onClick={handleOpen}

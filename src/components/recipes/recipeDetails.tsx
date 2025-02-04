@@ -6,9 +6,12 @@ import { Typography } from '@mui/material';
 
 const bull = '• ';  
 
-export default function RecipeDetails(recipe: Recipe) {
+
+
+const RecipeDetails= ( recipe:Recipe ) => {
   console.log("******************recipe***************", recipe);
 
+ 
   return (
     <List sx={{ width: '100%', maxWidth: 400, bgcolor: 'background.paper', padding: 2, boxShadow: 3, borderRadius: 2 }}>
       <Typography variant="h4" sx={{ color: '#77A672', fontWeight: 'bold', marginBottom: 2 }}>
@@ -28,3 +31,4 @@ export default function RecipeDetails(recipe: Recipe) {
     </List>
   );
 }
+export default RecipeDetails;

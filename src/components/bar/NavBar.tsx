@@ -27,8 +27,7 @@ const NavBar = () => {
           </Typography>
           <Box sx={{ display: "flex", gap: 2 }}>
           <Register />
-        
-          <div><Login /></div>
+          {!userState.user?.isConnected&&<Login /> }    
           <LetterAvatars />
             <Button
               component={Link}
